@@ -9,7 +9,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class AnnotationController
 {
     /**
-     * @Route("/annotation/number",name="app_annotaion_number")
+     * @Route(
+     *     "/annotation/number",
+     *     name="app_annotaion_number",
+     *     condition="context.getMethod() in ['GET', 'HEAD'] and request.headers.get('User-Agent') matches '/chrome/i'"
+     * )
      * @return Response
      */
     public function number(): Response
